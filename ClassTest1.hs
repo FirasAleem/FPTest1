@@ -17,7 +17,7 @@ import Data.Char
 {- Question 1 -}
 
 checkParity :: String -> Bool
-checkParity [] = False
+checkParity [] = True
 checkParity bit = (evenOnes bit '1') && ((length bit) `mod` 8 == 0)
 
 evenOnes :: String -> Char -> Bool
@@ -80,11 +80,18 @@ substitution (p:ps) key | isLetter p = if (isUpper p) then (key !! (charLabel p)
 
 {- Question 3 -}
 
+isqrt :: Int -> Int
+isqrt = ceiling . sqrt . fromIntegral
+
+
+isPrime' k = if k > 1 then null [ x | x <- [2.. isqrt k], k `mod` x == 0] else False
+
+
 largestPrimeBetween :: Int -> Int
 --largestPrimeBetween num = head(reverse [p | p <- [num..(2*num)], not (p `mod` 2 == 0), isPrime p])
 largestPrimeBetween 0 = error "No primes"
 largestPrimeBetween 1 = error "1 is not prime"
-largestPrimeBetween num = [p | p <- reverse [num..(2*num)], not (p `mod` 2 == 0), isPrime p] !! 0
+largestPrimeBetween num = [p | p <- reverse [num..(2*num)], not (p `mod` 2 == 0), isPrime' p] !! 0
 
 
 nextPrime :: Int -> Int
