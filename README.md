@@ -1,4 +1,7 @@
 # Class Test 1 
+This is Test 1 (worth 50%!) for the Functional Programming module during my second year at the University of Birmingham. 
+
+
 
 ## Marking table
 
